@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bobksl0t2ntu7"]
+[gd_scene load_steps=14 format=3 uid="uid://b53bf00151pv8"]
 
-[ext_resource type="Texture2D" uid="uid://cw6yhyhrnjple" path="res://assets/step_solid_Cube.005_color.png" id="1_ki34c"]
-[ext_resource type="Texture2D" uid="uid://ddn28a5g17pyq" path="res://assets/step_breaking_Cube.png" id="3_m56j2"]
+[ext_resource type="Script" path="res://scripts/ledge.gd" id="1_h0565"]
+[ext_resource type="Texture2D" uid="uid://cw6yhyhrnjple" path="res://assets/step_solid_Cube.005_color.png" id="2_pnuon"]
+[ext_resource type="Texture2D" uid="uid://ddn28a5g17pyq" path="res://assets/step_breaking_Cube.png" id="3_b4h3v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00y6b"]
 resource_name = "Material.008"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_ki34c")
+albedo_texture = ExtResource("2_pnuon")
 roughness = 0.5
 texture_filter = 2
 
@@ -50,7 +51,7 @@ data = PackedVector3Array(-0.1623, 0.1249, -0.5456, 0.1614, 0.1987, -2.0069, 0.1
 resource_name = "Material.009"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_m56j2")
+albedo_texture = ExtResource("3_b4h3v")
 roughness = 0.5
 texture_filter = 2
 
@@ -84,9 +85,48 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t7tl5")
 
+[sub_resource type="Animation" id="Animation_hqr4h"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Broken:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(-6.28319, 1.5708, 6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_ea57j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Broken:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4hol"]
+_data = {
+"RESET": SubResource("Animation_ea57j"),
+"new_animation": SubResource("Animation_hqr4h")
+}
+
 [node name="Ledge" type="StaticBody3D"]
+script = ExtResource("1_h0565")
 
 [node name="Good" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("ArrayMesh_7t57f")
 skeleton = NodePath("")
 
@@ -104,10 +144,15 @@ one_shot = true
 autostart = true
 
 [node name="Broken" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0, -10.7109, 0, 23.5152, 0, 9.65133, 0, 0, -0.000463177, -0.000254973, -0.000167673)
-visible = false
+transform = Transform3D(-4.21873e-07, 0, -10.7109, 0, 23.5152, 0, 9.65133, 0, -4.68188e-07, -0.000463177, -0.000254973, -0.000167673)
 mesh = SubResource("ArrayMesh_mssyf")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_d4hol")
+}
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

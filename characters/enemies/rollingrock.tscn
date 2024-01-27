@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5t6f6ml0p113"]
+[gd_scene load_steps=10 format=3 uid="uid://c5t6f6ml0p113"]
 
-[ext_resource type="Script" path="res://scripts/goat.gd" id="1_8r0f5"]
+[ext_resource type="Script" path="res://scripts/rollingrock.gd" id="1_63now"]
 [ext_resource type="Texture2D" uid="uid://cxw4qsd55grap" path="res://assets/rollingrock_Icosphere_color.png" id="2_hfb1t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc6e6"]
@@ -45,9 +45,47 @@ shadow_mesh = SubResource("ArrayMesh_1v1ct")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oi8c4"]
 
+[sub_resource type="Animation" id="Animation_bdu3l"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rock:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 6.28319, 6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_stg1w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rock:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aechl"]
+_data = {
+"RESET": SubResource("Animation_stg1w"),
+"new_animation": SubResource("Animation_bdu3l")
+}
+
 [node name="rollingrock" type="CharacterBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
-script = ExtResource("1_8r0f5")
+script = ExtResource("1_63now")
 
 [node name="rock" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -56,3 +94,9 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_oi8c4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_aechl")
+}

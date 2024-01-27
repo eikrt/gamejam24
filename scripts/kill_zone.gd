@@ -13,5 +13,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.queue_free()
+		body.die()
 		
+
+
+func _on_area_entered(area):
+	if area.name == "Player":
+		area.get_node("../").die()

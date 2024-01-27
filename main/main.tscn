@@ -1,0 +1,180 @@
+[gd_scene load_steps=12 format=3 uid="uid://cskpgmruica0c"]
+
+[ext_resource type="Script" path="res://scripts/all.gd" id="1_jttnt"]
+[ext_resource type="PackedScene" uid="uid://bobksl0t2ntu7" path="res://landscape/obstacles/ledge.tscn" id="1_sa84k"]
+[ext_resource type="PackedScene" uid="uid://cfct3evrp8klm" path="res://landscape/obstacles/checkpointcloud.tscn" id="2_hvvdj"]
+[ext_resource type="PackedScene" uid="uid://lwf806sb8jq" path="res://characters/player/player.tscn" id="3_qxhe5"]
+[ext_resource type="PackedScene" uid="uid://b53bf00151pv8" path="res://landscape/obstacles/ledge_broken.tscn" id="4_d3a67"]
+[ext_resource type="Script" path="res://scripts/Camera3D.gd" id="4_deotn"]
+[ext_resource type="PackedScene" uid="uid://qqu34nc8f4rb" path="res://landscape/misc/goat_spawner.tscn" id="5_d8kk5"]
+[ext_resource type="PackedScene" uid="uid://bqrsdbw6500p3" path="res://landscape/obstacles/tree.tscn" id="5_ha6vu"]
+[ext_resource type="PackedScene" uid="uid://pdgblcph5gou" path="res://levels/testlevel.tscn" id="6_q2731"]
+[ext_resource type="PackedScene" uid="uid://bsdr1rc3rn2em" path="res://characters/enemies/kill_zone.tscn" id="7_jq514"]
+
+[sub_resource type="Environment" id="Environment_qjn6w"]
+ambient_light_source = 2
+ambient_light_color = Color(0.282353, 0.352941, 0.631373, 1)
+volumetric_fog_albedo = Color(1, 1, 0.745098, 1)
+
+[node name="All" type="Node3D"]
+script = ExtResource("1_jttnt")
+
+[node name="World" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.790292, 5.73972)
+
+[node name="Platforms" type="Node3D" parent="World"]
+
+[node name="Ledge2" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.938541, -0.120379, 0.323495, 0.113809, 0.992728, 0.0392274, -0.325865, 0, 0.945416, 2.53496, 12.9362, 9.91303)
+
+[node name="Ledge3" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.745808, -0.129592, 0.653434, 0.0974724, 0.991567, 0.0853998, -0.658991, 0, 0.75215, 6.01356, 13.381, 7.59533)
+
+[node name="Ledge4" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.518602, -0.201039, 0.831045, 0.122857, 0.9794, 0.16026, -0.846143, 0.0189881, 0.532618, 7.65128, 13.7037, 6.03053)
+
+[node name="Ledge5" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.271634, 0.00860348, 0.962363, 0.0548722, 0.998472, 0.00656183, -0.960836, 0.0545893, -0.271691, 9.73594, 15.6241, -2.44545)
+
+[node name="Ledge8" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.993499, 1.50835e-17, 0.113845, 0.0145051, 0.99185, 0.126583, -0.112917, 0.127411, -0.985402, 1.84748, 17.9763, -9.94519)
+
+[node name="Ledge9" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.926297, -0.00450397, 0.376768, 0.0322671, 0.995307, 0.0912278, -0.375411, 0.0966613, -0.921804, 4.40267, 17.4729, -8.58678)
+
+[node name="Ledge10" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.569714, -0.090952, 0.816795, 0.00520186, 0.993438, 0.11425, -0.821827, 0.0693386, -0.565503, 8.36761, 16.1752, -5.11027)
+
+[node name="Ledge11" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.759724, -0.070364, 0.646427, 0.0898376, 0.973236, 0.21152, -0.644009, 0.218771, -0.73307, 6.72928, 17.2659, -7.34089)
+
+[node name="Ledge12" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.72765, -0.257796, -0.635663, -0.205815, 0.966046, -0.156186, 0.654345, 0.01718, -0.756002, -5.83762, 31.4151, -8.59447)
+
+[node name="Ledge13" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.606316, -0.00869824, -0.795176, 0.0393486, 0.999043, 0.0190748, 0.79425, -0.0428543, 0.606078, -7.9428, 34.8671, 5.45598)
+
+[node name="Ledge17" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.901945, -0.0163587, -0.431542, 0.0740966, 0.990325, 0.117325, 0.425448, -0.137796, 0.894431, -5.0526, 35.7012, 8.44095)
+
+[node name="Ledge18" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.971668, -0.160844, -0.173182, 0.167337, 0.98562, 0.0234696, 0.166917, -0.0517843, 0.98461, -1.93247, 36.0428, 8.94513)
+
+[node name="Ledge19" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.870578, -0.0436461, 0.490091, 0.0393486, 0.999043, 0.0190748, -0.490455, 0.00267837, 0.871463, 5.26363, 49.3985, 8.90708)
+
+[node name="Ledge20" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.546281, -0.138734, 0.826033, 0.0740966, 0.990325, 0.117325, -0.834319, -0.00288599, 0.551275, 8.62016, 50.2326, 6.45821)
+
+[node name="Ledge21" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.2999, -0.0735646, 0.95113, 0.167337, 0.98562, 0.0234696, -0.93918, 0.152121, 0.307897, 9.55167, 50.5743, 3.43799)
+
+[node name="Ledge22" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.0285892, -0.0202073, 0.999387, 0.0393486, 0.999043, 0.0190748, -0.998817, 0.0387791, 0.029357, 10.2036, 51.6538, -0.170388)
+
+[node name="Ledge23" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.433247, -0.0739987, 0.898233, 0.0740966, 0.990325, 0.117325, -0.898225, 0.117386, -0.423572, 9.83575, 52.4879, -4.30898)
+
+[node name="Ledge24" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.650122, 0.0924177, 0.754189, 0.167337, 0.98562, 0.0234696, -0.741175, 0.141462, -0.656239, 7.72812, 52.8296, -6.66426)
+
+[node name="Ledge14" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(0.0538696, -0.215296, -0.975062, 0.000504455, 0.976485, -0.215583, 0.998548, 0.0111215, 0.0527113, -9.44271, 31.8358, -1.08421)
+
+[node name="Ledge15" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.469344, -0.202181, -0.859557, -0.186733, 0.974145, -0.127173, 0.863045, 0.10082, -0.494963, -7.71999, 31.2771, -6.20387)
+
+[node name="Ledge16" parent="World/Platforms" instance=ExtResource("1_sa84k")]
+transform = Transform3D(-0.263231, -0.0764811, -0.961696, -0.0376932, 0.996907, -0.068964, 0.963996, 0.0180959, -0.2653, -9.28016, 31.8033, -3.72632)
+
+[node name="checkpointcloud3" parent="World/Platforms" instance=ExtResource("2_hvvdj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.4925, -1.55896, 11.4952)
+
+[node name="Ledge" parent="World/Platforms" instance=ExtResource("4_d3a67")]
+transform = Transform3D(0.912028, -0.0176444, 0.409748, 0.0160947, 0.999844, 0.00723087, -0.409812, -2.82511e-09, 0.91217, 4.25022, 13.1457, 8.68808)
+
+[node name="Ledge6" parent="World/Platforms" instance=ExtResource("4_d3a67")]
+transform = Transform3D(0.472581, 0, 0.881287, 0, 1, 0, -0.881287, 0, 0.472582, 8.83, 14.2648, 4.87717)
+
+[node name="Ledge7" parent="World/Platforms" instance=ExtResource("5_ha6vu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16875, 16.2643, -12.395)
+ledgeTime = 1.0
+
+[node name="Characters" type="Node3D" parent="World"]
+
+[node name="Player" parent="World/Characters" instance=ExtResource("3_qxhe5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0451274, 16.1893, 10.9953)
+collision_layer = 2
+collision_mask = 15
+wall_min_slide_angle = 0.261799
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 0.261799
+
+[node name="Camera3D" type="Camera3D" parent="World/Characters/Player"]
+transform = Transform3D(1, -3.18389e-16, 3.4746e-16, 2.3334e-16, 0.975064, 0.221923, -4.09453e-16, -0.221923, 0.975064, 0, 4.75134, 3.04785)
+environment = SubResource("Environment_qjn6w")
+fov = 40.0
+script = ExtResource("4_deotn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Characters/Player/Camera3D"]
+transform = Transform3D(0.352397, -0.882634, 0.311085, 0.207687, 0.397878, 0.893622, -0.912514, -0.250302, 0.323522, 0.000575066, -2.79328, 3.00138)
+light_energy = 1.3
+light_bake_mode = 1
+
+[node name="Spawners" type="Node3D" parent="World/Characters/Player/Camera3D"]
+transform = Transform3D(1, 2.3334e-16, -4.09453e-16, -3.18389e-16, 0.975064, -0.221923, 3.4746e-16, 0.221923, 0.975064, 0, 0.463721, -5.04142)
+
+[node name="GoatSpawner2" parent="World/Characters/Player/Camera3D/Spawners" instance=ExtResource("5_d8kk5")]
+transform = Transform3D(1, 4.83782e-32, 0, -7.23458e-31, 1, 0, 0, 0, 1, 9.16701, 0, -1.30287)
+RollBoulders = true
+
+[node name="GoatSpawner" parent="World/Characters/Player/Camera3D/Spawners" instance=ExtResource("5_d8kk5")]
+transform = Transform3D(1, 4.83782e-32, 0, -7.23458e-31, 1, 0, 0, 0, 1, -7.29633, 0, -2.56921)
+
+[node name="Node3D" type="Node3D" parent="World/Characters/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.16309, 6.95631)
+
+[node name="ColorRect" type="ColorRect" parent="World/Characters/Player"]
+visible = false
+offset_right = 832.0
+offset_bottom = 647.0
+
+[node name="Environment" type="Node3D" parent="World"]
+
+[node name="Scenery" type="Node3D" parent="World"]
+
+[node name="testlevel" parent="World/Scenery" instance=ExtResource("6_q2731")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.154, 0)
+
+[node name="KillZones" type="Node3D" parent="World"]
+
+[node name="KillZone" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(3.27263, 0.0691936, -5.01699, -1.54878, 1.15284, -0.612791, 4.78447, 0.325855, 3.23331, 3.76764, 13.0319, -4.21881)
+
+[node name="KillZone4" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-0.892, -0.130558, -5.8973, -0.6919, 1.18687, -0.552234, 5.89284, 0.119592, -0.957514, -2.18156, 18.749, 3.83795)
+
+[node name="KillZone5" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-0.150482, -0.000501473, -6.99838, -0.291967, 1.39878, 0.00377225, 6.99229, 0.0583962, -0.150456, 4.14364, 22.7439, -0.443778)
+
+[node name="KillZone6" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-2.99165, -0.0242953, -6.32735, 1.23102, 1.37077, -0.713628, 6.20763, -0.283544, -2.90783, -6.6966, 28.8427, -4.06373)
+
+[node name="KillZone7" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-2.99165, -0.0242953, -6.32735, 0.0621519, 1.39956, -0.163735, 6.32821, -0.0252312, -2.98963, -3.56256, 31.6372, 6.4049)
+
+[node name="KillZone8" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-2.99165, -0.0242953, -6.32735, 0.0621519, 1.39956, -0.163735, 6.32821, -0.0252312, -2.98963, -1.74382, 44.2899, 6.4049)
+
+[node name="KillZone9" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-2.99165, -0.0242953, -6.32735, 0.0621519, 1.39956, -0.163735, 6.32821, -0.0252312, -2.98963, -4.73029, 40.0616, -2.11956)
+
+[node name="KillZone10" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(-3.24606, -0.206991, -6.1149, -2.10012, 1.3355, -0.0153393, 5.83546, 0.365492, -3.40703, 5.59317, 48.6327, -0.463831)
+
+[node name="KillZone3" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(2.78032, -0.0170245, -5.31625, -0.0179192, 1.19981, -0.105426, 5.31691, 0.012946, 2.77963, 3.46828, 8.18002, 4.96837)
+
+[node name="KillZone2" parent="World/KillZones" instance=ExtResource("7_jq514")]
+transform = Transform3D(2.55106, -0.000159443, -4.30024, -0.00028742, 1, -0.00109745, 4.30024, 0.000161426, 2.55106, 3.84524, 9.3973, 5.94683)

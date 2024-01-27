@@ -29,8 +29,9 @@ func _on_timer_timeout():
 	else:
 		g = goat.instantiate()
 	#g = jump_rock.instantiate()
-	g = eagle.instantiate()
+	g = rolling_rock.instantiate()
 	#if $RayCast3D.get_collision_point():
 	#	g.global_position = $RayCast3D.get_collision_point()
 	g.global_position = self.global_position
+	g.name = "Goat"
 	get_tree().get_root().add_child(g)

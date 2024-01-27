@@ -4,10 +4,16 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 2
 var onGround = false
+var stunned
 var offset = 0.0
+var donk = Vector3()
+var stunnedChange = 0
+const stunnedTime = 0.1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	pass
 func createVectorFromRadians(radius: float, polar: float, azimuth: float) -> Vector3:
 	var x = radius * sin(polar) * cos(azimuth)
 	var y = radius * sin(polar) * sin(azimuth)
@@ -38,22 +44,34 @@ func _physics_process(delta):
 	if velocity.x < 0.1 and velocity.x > -0.1:
 		$AnimatedSprite3D.stop()
 		#$AnimatedSprite3D.frame = 0
-
+		
 	if input_dir.x > 0:
 		offset += 0.0001
 	else:
 		offset -= 0.0001
-	
-	if direction.x < 0:
-		$AnimatedSprite3D.flip_h = true;
+	if stunned:
+		stunnedChange += delta
+		if stunnedChange > stunnedTime:
+			stunnedChange = 0
+			stunned = false
+			$ColorRect.visible = false
 	else:
-		$AnimatedSprite3D.flip_h = false;
-	if direction:
+		if input_dir.x < 0:
+			$AnimatedSprite3D.flip_h = true;
+			
+		elif input_dir.x > 0:
+			$AnimatedSprite3D.flip_h = false;
+			
+	if direction and not stunned:
 		velocity.x = -sin(angToPillar) * direction.x * SPEED
 		velocity.z = -cos(angToPillar) * direction.x * SPEED
+	elif stunned:
+		velocity.x = -sin(angToPillar) * -32.0
+		velocity.z = -cos(angToPillar) * -32.0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	donk.x = lerp(donk.x, 1.0, 0.1)
 	position.z = lerp(position.z, cos(angToPillar2) * -10, 0.1);
 	position.x = lerp(position.x, sin(angToPillar2) * -10, 0.1);
 	Globals.PlayerPosition = self.position
@@ -67,8 +85,24 @@ func _physics_process(delta):
 	#	velocity = velocity.slide(Vector3.UP)
 	move_and_slide()
 
-
+func die():
+	get_tree().root.get_child(1).restart()
+	
 func _on_area_3d_body_entered(body):
-	pass
+	if body.name == "Goat":
+		body.queue_free()
+		stunned = true
+		$ColorRect.visible = true
+		donk = Vector3(10,0,0)
+		velocity.y += 1
 	#velocity.y = 0
 	#onGround = true
+
+
+func _on_area_3d_area_entered(area):
+	if area.name == "Goat":
+		area.get_node("../").queue_free()
+		stunned = true
+		$ColorRect.visible = true
+		donk = Vector3(10,0,0)
+		velocity.y += 2

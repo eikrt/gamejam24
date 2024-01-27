@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsdr1rc3rn2em"]
+[gd_scene load_steps=4 format=3 uid="uid://bsdr1rc3rn2em"]
 
 [ext_resource type="Script" path="res://scripts/kill_zone.gd" id="1_gwytw"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_wjo4i"]
+albedo = Color(1, 0.490196, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpjae"]
 size = Vector3(2.15062, 1.94445, 1.98451)
@@ -9,8 +12,10 @@ size = Vector3(2.15062, 1.94445, 1.98451)
 script = ExtResource("1_gwytw")
 
 [node name="FogVolume" type="FogVolume" parent="."]
+material = SubResource("FogMaterial_wjo4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_hpjae")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

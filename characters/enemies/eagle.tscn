@@ -1,68 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm0b4wcbreisu"]
+[gd_scene load_steps=9 format=3 uid="uid://cm0b4wcbreisu"]
 
 [ext_resource type="Script" path="res://scripts/eagle.gd" id="1_fdm1j"]
-[ext_resource type="Texture2D" uid="uid://b7ui8uqw2gjy3" path="res://assets/player_running.png" id="2_ox5li"]
+[ext_resource type="Texture2D" uid="uid://bbvioh7gkle0v" path="res://assets/eagle.png" id="2_3lmrm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f86yi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tvrsu"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(0, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7maa"]
+atlas = ExtResource("2_3lmrm")
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apn5s"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(48, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsxxy"]
+atlas = ExtResource("2_3lmrm")
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uoduo"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(96, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkyf0"]
+atlas = ExtResource("2_3lmrm")
+region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehhso"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(144, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7vl8"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(192, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqw1e"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(240, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aba0g"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(288, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16m7k"]
-atlas = ExtResource("2_ox5li")
-region = Rect2(336, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh2dm"]
+atlas = ExtResource("2_3lmrm")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q4b7n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tvrsu")
+"texture": SubResource("AtlasTexture_a7maa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apn5s")
+"texture": SubResource("AtlasTexture_lsxxy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uoduo")
+"texture": SubResource("AtlasTexture_mkyf0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ehhso")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m7vl8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xqw1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aba0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16m7k")
+"texture": SubResource("AtlasTexture_eh2dm")
 }],
 "loop": true,
 "name": &"default",
@@ -71,6 +43,7 @@ animations = [{
 
 [node name="Eagle" type="CharacterBody3D"]
 collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_fdm1j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

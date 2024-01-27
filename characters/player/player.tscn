@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ui8uqw2gjy3" path="res://assets/player_running.png" id="2_ts8qa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lqn2w"]
-radius = 0.41152
+radius = 0.428084
 height = 1.2301
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n88kd"]
@@ -128,9 +128,11 @@ sprite_frames = SubResource("SpriteFrames_23m5h")
 animation = &"jump"
 autoplay = "walk_right"
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Player" type="Area3D" parent="."]
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0818119, 0)
 shape = SubResource("CapsuleShape3D_lqn2w")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Player" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Player" to="." method="_on_area_3d_body_entered"]

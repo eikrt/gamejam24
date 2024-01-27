@@ -8,17 +8,20 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	pass
+func _physics_process(delta):
 	var dir = global_position.direction_to(Globals.GlobalPlayerPosition)
 	velocity = dir * SPEED
-func _physics_process(delta):
+	$AnimatedSprite3D.play()
+	self.name = "Goat"
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	#position = global_position.move_toward(Globals.PlayerPosition, delta * 10)
 
 	# Handle Jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		pass
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

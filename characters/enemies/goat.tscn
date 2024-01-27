@@ -1,73 +1,63 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4i6wray56eoi"]
+[gd_scene load_steps=12 format=3 uid="uid://c4i6wray56eoi"]
 
 [ext_resource type="Script" path="res://scripts/Goat.gd" id="1_twsl0"]
-[ext_resource type="Texture2D" uid="uid://b7ui8uqw2gjy3" path="res://assets/player_running.png" id="2_nh04p"]
+[ext_resource type="Texture2D" uid="uid://2a73bdmc314d" path="res://assets/goat.png" id="2_rcdxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f86yi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tvrsu"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(0, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lkxh"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(0, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apn5s"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(48, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ncyi"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(64, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uoduo"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(96, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7tdi"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(128, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehhso"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(144, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c6e0"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(192, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7vl8"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(192, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eadm5"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(256, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqw1e"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(240, 0, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_14dsv"]
+atlas = ExtResource("2_rcdxv")
+region = Rect2(320, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aba0g"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(288, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16m7k"]
-atlas = ExtResource("2_nh04p")
-region = Rect2(336, 0, 48, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q4b7n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k37f6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tvrsu")
+"texture": SubResource("AtlasTexture_0lkxh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apn5s")
+"texture": SubResource("AtlasTexture_0ncyi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uoduo")
+"texture": SubResource("AtlasTexture_w7tdi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ehhso")
+"texture": SubResource("AtlasTexture_5c6e0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7vl8")
+"texture": SubResource("AtlasTexture_eadm5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xqw1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aba0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16m7k")
+"texture": SubResource("AtlasTexture_14dsv")
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 24.0
 }]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1fcvr"]
+radius = 0.62975
+height = 1.2595
 
 [node name="Goat" type="CharacterBody3D"]
 collision_layer = 4
@@ -80,5 +70,11 @@ shape = SubResource("BoxShape3D_f86yi")
 pixel_size = 0.02
 billboard = 1
 texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_q4b7n")
+sprite_frames = SubResource("SpriteFrames_k37f6")
 autoplay = "default"
+
+[node name="Goat" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023104, 0, 0)
+shape = SubResource("CapsuleShape3D_1fcvr")
