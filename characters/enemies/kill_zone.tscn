@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsdr1rc3rn2em"]
+
+[ext_resource type="Script" path="res://scripts/kill_zone.gd" id="1_gwytw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpjae"]
+size = Vector3(2.15062, 1.94445, 1.98451)
+
+[node name="KillZone" type="Area3D"]
+script = ExtResource("1_gwytw")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hpjae")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

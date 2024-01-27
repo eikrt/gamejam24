@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cm0b4wcbreisu"]
+
+[ext_resource type="Script" path="res://scripts/eagle.gd" id="1_fdm1j"]
+[ext_resource type="Texture2D" uid="uid://b7ui8uqw2gjy3" path="res://assets/player_running.png" id="2_ox5li"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f86yi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvrsu"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apn5s"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoduo"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehhso"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7vl8"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqw1e"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aba0g"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16m7k"]
+atlas = ExtResource("2_ox5li")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4b7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvrsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apn5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoduo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehhso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7vl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqw1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aba0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16m7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Eagle" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_fdm1j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_f86yi")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.02
+billboard = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_q4b7n")
+autoplay = "default"

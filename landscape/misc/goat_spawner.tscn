@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://qqu34nc8f4rb"]
+
+[ext_resource type="Script" path="res://scripts/goat_spawner.gd" id="1_xpo2a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_epd67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sk6"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="GoatSpawner" type="Node3D"]
+script = ExtResource("1_xpo2a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_epd67")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sk6")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.637172, 0)
+target_position = Vector3(2.08165e-12, -10, 2.08165e-12)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
